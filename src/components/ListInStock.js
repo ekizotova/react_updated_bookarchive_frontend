@@ -32,7 +32,7 @@ function ListInStock() {
                     </thead>
                     <tbody>
                         {inStock.map(bookstore => (
-                            <tr key={bookstore.idPublisher}>
+                            <tr key={bookstore.idBookstore}>
 								<td> {bookstore.storeName} </td>
                                 <td> {bookstore.location} </td>
                                 

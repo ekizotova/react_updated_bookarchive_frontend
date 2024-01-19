@@ -6,6 +6,7 @@ import BookstoresList from './components/BookstoresList';
 import PublihsersList from './components/PublihsersList'; // Исправьте название компонента PublishersList
 import PublishedBy from './components/PublishedBy';
 import ListInStock from './components/ListInStock';
+import WrittenBooks from './components/WrittenBooks';
 import Search from './components/Search';
 
 import './App.css';
@@ -23,7 +24,7 @@ function App() {
 		  <Route path="/books/publishedBy/:idBook" element={<PublishedBy />} />
 		  <Route path="/books/inStock/:idBook" element={<ListInStock />} />
 		  <Route path="/books/search" element={<Search />} />
-
+		  <Route path="/authors/writtenBooks/:idAuthor" element={<WrittenBooks />} />
         </Routes>
       </div>
     </Router>

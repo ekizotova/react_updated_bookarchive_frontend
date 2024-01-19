@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { GetAllAuthors, AddAuthor, CheckAuthorExists } from './Requests';
 
 function AuthorsList() {
-  // Логика получения данных и отображения списка авторов
+
 	const [authors, setAuthors] = useState([]);
 	const [newAuthor, setNewAuthor] = useState({
 		name: '',
@@ -29,12 +30,19 @@ function AuthorsList() {
 	const handleAddAuthor = async () => {
     try {
 		
+      if (!newAuthor.name || !newAuthor.surname || !newAuthor.nationality || !newAuthor.age) {
+            setError('All fields must be filled');
+            return;
+        }
+
+	  
 	  const authorExists = await CheckAuthorExists(newAuthor);
 	  
 	  if (authorExists) {
         setError('Author with the same data already exists');
         return;
       }
+	  
       // Отправка запроса на сервер
       await AddAuthor(newAuthor);
       // Обновление данных после успешного добавления
@@ -72,6 +80,7 @@ function AuthorsList() {
                             <th>  surname  </th>
                             <th>  country origin  </th>
                             <th>  age  </th>
+							<th>books</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +91,12 @@ function AuthorsList() {
                                 <td>{author.surname}</td>
                                 <td>{author.nationality}</td>
                                 <td>{author.age}</td>
+								<td>
+                
+									<Link to={`/authors/writtenBooks/${author.idAuthor}`}>
+											View
+									</Link>
+								</td>
                             </tr>
                         ))}
                     </tbody>
