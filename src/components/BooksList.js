@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { GetAllBooks } from './Requests';
 
 function BooksList() {
@@ -24,25 +25,44 @@ function BooksList() {
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th> </th>
                             <th>title</th>
                             <th>genre</th>
-                            <th>pageNumber</th>
-							<th>ageRating</th>
+                            <th>page number</th>
+							<th>rating</th>
+							<th>author</th>
+							<th>publ.</th>
+							<th>buy</th>
                         </tr>
                     </thead>
                     <tbody>
                         {books.map(book => (
                             <tr key={book.idBook}>{/* No whitespace before or after this line */}
-                                <td>{book.idBook}</td>
-                                <td>{book.title}</td>
+                                <td> {book.idBook} </td>
+                                <td> {book.title} </td>
                                 <td>{book.genre}</td>
                                 <td>{book.pageNumber}</td>
                                 <td>{book.ageRating}</td>
+								<td>{book.name} {book.surname}</td>
+								<td>
+                
+									<Link to={`/books/publishedBy/${book.idBook}`}>
+											View
+									</Link>
+								</td>
+								<td>
+                
+									<Link to={`/books/inStock/${book.idBook}`}>
+											View
+									</Link>
+								</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+				<Link to="/books/search">
+					<button>Search Page</button>
+				</Link>
     </div>
   );
 }
