@@ -3,7 +3,7 @@ import MainPage from './components/MainPage';
 import AuthorsList from './components/AuthorsList';
 import BooksList from './components/BooksList';
 import BookstoresList from './components/BookstoresList';
-import PublihsersList from './components/PublihsersList'; // Исправьте название компонента PublishersList
+import PublihsersList from './components/PublihsersList';
 import PublishedBy from './components/PublishedBy';
 import ListInStock from './components/ListInStock';
 import WrittenBooks from './components/WrittenBooks';

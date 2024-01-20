@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GetAllPublishers } from './Requests';
 
 function PublihsersList() {
-  // Логика получения данных и отображения списка авторов
+  
   const [publishers, setPublishers] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function PublihsersList() {
                 setPublishers(fetchedPublishers);
             } catch (error) {
                 console.error("Error fetching publishers:", error);
-                // Handle error state appropriately
+               
             }
         };
 

@@ -21,7 +21,7 @@ function WrittenBooks() {
   
   return (
     <div>
-      <h1>List of books buy chosen author</h1>
+      <h1>List of books by preferred author</h1>
 				<table>
                     <thead>
                         <tr>

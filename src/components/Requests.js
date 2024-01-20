@@ -21,7 +21,7 @@ export async function GetAllAuthors() {
         return await data;
     } catch (error) {
         console.error("Error fetching data: ", error);
-        return []; // return empty array in case of error
+        return []; 
     }
 }
 
@@ -36,7 +36,7 @@ export async function GetAllBooks() {
         return await data;
     } catch (error) {
         console.error("Error fetching data: ", error);
-        return []; // return empty array in case of error
+        return []; 
     }
 }
 
@@ -51,7 +51,7 @@ export async function GetAllBookstores() {
         return await data;
     } catch (error) {
         console.error("Error fetching data: ", error);
-        return []; // return empty array in case of error
+        return [];
     }
 }
 
@@ -66,23 +66,22 @@ export async function GetAllPublishers() {
         return await data;
     } catch (error) {
         console.error("Error fetching data: ", error);
-        return []; // return empty array in case of error
+        return []; 
     }
 }
 
 export async function GetAuthorById(idAuthor) {
     try {
-        const response = await fetch(AUTHOR_URL + "/" + idAuthor); // Make sure to use the correct endpoint for product details
+        const response = await fetch(AUTHOR_URL + "/" + idAuthor); 
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
         const data = await response.json();
-        console.log("product details: ", data);
-        return data; // Assuming that the data has the reviews and orders within it
+        console.log("author: ", data);
+        return data; 
     } catch (error) {
-        console.error("Error fetching product details: ", error);
-        // Return an object with empty arrays for reviews and orders in case of error
-        return { reviews: [], orders: [] };
+        console.error("Error fetching: ", error);
+        return [];
     }
 }
 
@@ -101,7 +100,7 @@ export const CheckAuthorExists = async (authorData) => {
     }
 
     const result = await response.json();
-    return result.exists; // Предполагается, что сервер возвращает объект { exists: true/false }
+    return result.exists; 
   } catch (error) {
     console.error('Error checking author existence:', error);
     throw error;
@@ -126,7 +125,7 @@ export const AddAuthor = async (newAuthorData) => {
     console.log('Author added successfully:', addedAuthor);
   } catch (error) {
     console.error('Error adding author:', error);
-    throw error; // Прокидываем ошибку для обработки в компоненте
+    throw error;
   }
 }
 

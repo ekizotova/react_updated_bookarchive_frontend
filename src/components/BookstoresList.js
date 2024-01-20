@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GetAllBookstores } from './Requests';
 
 function BookstoresList() {
-  // Логика получения данных и отображения списка авторов
+ 
   const [bookstores, setBookstores] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function BookstoresList() {
                 setBookstores(fetchedBookstores);
             } catch (error) {
                 console.error("Error fetching bookstores:", error);
-                // Handle error state appropriately
+          
             }
         };
 

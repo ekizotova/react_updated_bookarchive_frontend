@@ -20,7 +20,6 @@ function AuthorsList() {
                 setAuthors(fetchedAuthors);
             } catch (error) {
                 console.error("Error fetching authors:", error);
-                // Handle error state appropriately
             }
         };
 
@@ -34,7 +33,6 @@ function AuthorsList() {
             setError('All fields must be filled');
             return;
         }
-
 	  
 	  const authorExists = await CheckAuthorExists(newAuthor);
 	  
@@ -43,12 +41,11 @@ function AuthorsList() {
         return;
       }
 	  
-      // Отправка запроса на сервер
       await AddAuthor(newAuthor);
-      // Обновление данных после успешного добавления
+   
       const updatedAuthors = await GetAllAuthors();
       setAuthors(updatedAuthors);
-      // Сброс полей формы после добавления
+     
       setNewAuthor({
         name: '',
         surname: '',

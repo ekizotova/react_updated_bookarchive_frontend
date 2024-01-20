@@ -13,7 +13,7 @@ function ListInStock() {
         setInStock(fetchedInStock);
       } catch (error) {
         console.error("Error fetching stock by:", error);
-        // Handle error state appropriately
+ 
       }
     };
 

@@ -13,7 +13,7 @@ function PublishedBy() {
         setPublishedBy(fetchedPublishedBy);
       } catch (error) {
         console.error("Error fetching published by:", error);
-        // Handle error state appropriately
+      
       }
     };
 

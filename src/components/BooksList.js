@@ -12,7 +12,7 @@ function BooksList() {
                 setBooks(fetchedBooks);
             } catch (error) {
                 console.error("Error fetching books:", error);
-                // Handle error state appropriately
+               
             }
         };
 
@@ -30,8 +30,9 @@ function BooksList() {
                             <th>genre</th>
                             <th>page number</th>
 							<th>rating</th>
+							<th>version</th>
 							<th>author</th>
-							<th>publ.</th>
+							<th>publisher</th>
 							<th>buy</th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@ function BooksList() {
                                 <td>{book.genre}</td>
                                 <td>{book.pageNumber}</td>
                                 <td>{book.ageRating}</td>
+								<td>{book.version}</td>
 								<td>{book.name} {book.surname}</td>
 								<td>
                 

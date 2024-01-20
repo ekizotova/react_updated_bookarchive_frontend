@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const MainPage = () => {
   const mainPageStyle = {
-    backgroundColor: 'green', // Замените 'red' на нужный вам цвет
-    margin: '0', // Сброс отступов для body, чтобы цвет занимал весь экран
-    padding: '0', // Сброс отступов
-    color: 'white', // Цвет текста на фоне, чтобы текст был виден
+    backgroundColor: 'green', 
+    margin: '0', 
+    padding: '0', 
+    color: 'white', 
   };	
   return (
     <div style={mainPageStyle} className="App-headgit push -uf origin masterer">
