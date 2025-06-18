@@ -28,6 +28,7 @@ function PublihsersList() {
                             <th> </th>
                             <th>name</th>
 							<th>contact</th>
+							<th>email</th>
                             <th>location</th>
                         </tr>
                     </thead>
@@ -35,8 +36,10 @@ function PublihsersList() {
                         {publishers.map(publisher => (
                             <tr key={publisher.idPublisher}>{/* No whitespace before or after this line */}
                                 <td> {publisher.idPublisher} </td>
-								<td> {publisher.publName} </td>
-								<td> {publisher.telNumber} </td>
+								<td> {publisher.name} </td>
+								<td> {publisher.contactNumber} </td>
+			                    <td> {publisher.email} </td>
+
                                 <td> {publisher.location} </td>
                                 
                             </tr>

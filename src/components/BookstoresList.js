@@ -34,7 +34,7 @@ function BookstoresList() {
                         {bookstores.map(bookstore => (
                             <tr key={bookstore.idBookstore}>{/* No whitespace before or after this line */}
                                 <td> {bookstore.idBookstore} </td>
-								<td> {bookstore.storeName} </td>
+								<td> {bookstore.name} </td>
                                 <td> {bookstore.location} </td>
                                 
                             </tr>

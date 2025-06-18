@@ -1,11 +1,11 @@
-const AUTHORS_URL = 'http://localhost:8080/api/authors/all';
-const BOOKS_URL = 'http://localhost:8080/api/books/all';
-const BOOKSTORES_URL = 'http://localhost:8080/api/bookstores/all';
-const PUBLISHERS_URL = 'http://localhost:8080/api/publishers/all';
+const AUTHORS_URL = 'http://localhost:8080/api/authors';
+const BOOKS_URL = 'http://localhost:8080/api/books';
+const BOOKSTORES_URL = 'http://localhost:8080/api/bookstores';
+const PUBLISHERS_URL = 'http://localhost:8080/api/publishers';
 const AUTHOR_URL = 'http://localhost:8080/api/authors';
 const AUTHOR_CHECK = 'http://localhost:8080/api/authors/checkAuthorExists';
-const PUBLISHER_CHECK = 'http://localhost:8080/api/publishers/checkPublisherExists';
-const BOOKSTORE_CHECK = 'http://localhost:8080/api/bookstores/checkBookstoreExists';
+const PUBLISHER_CHECK = 'http://localhost:8080/api/publishers/check';
+const BOOKSTORE_CHECK = 'http://localhost:8080/api/bookstores/check';
 
 export async function GetAllAuthors() {
     try {
@@ -70,9 +70,9 @@ export async function GetAllPublishers() {
     }
 }
 
-export async function GetAuthorById(idAuthor) {
+export async function GetAuthorById(id) {
     try {
-        const response = await fetch(AUTHOR_URL + "/" + idAuthor); 
+        const response = await fetch(AUTHOR_URL + "/name/" + id); 
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -129,25 +129,24 @@ export const AddAuthor = async (newAuthorData) => {
   }
 }
 
-export const GetPublishedByForBook = async (idBook) => {
+export const GetPublishedByForBook = async (publisherId) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/books/publishedBy/${idBook}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch publishedBy for book ${idBook}`);
+    const res = await fetch(`http://localhost:8080/api/publishers/publisher_info/${publisherId}`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch publisher');
     }
-
-    const publishedBy = await response.json();
-    return publishedBy;
-  } catch (error) {
-    throw new Error(`Error in GetPublishedByForBook: ${error.message}`);
+    return await res.json();
+  } catch (err) {
+    throw new Error(`Error in GetPublisherDetails: ${err.message}`);
   }
-}
+};
 
-export const GetStockForBook = async (idBook) => {
+
+export const GetStockForBook = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/books/inStock/${idBook}`);
+    const response = await fetch(`http://localhost:8080/api/books/inStock/${id}`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch publishedBy for book ${idBook}`);
+      throw new Error(`Failed to fetch publishedBy for book ${id}`);
     }
 
     const inStock = await response.json();
@@ -188,7 +187,7 @@ export const GetAuthorsBooks = async (idAuthor) => {
 export const CheckPublisherExists = async (publName) => {
   try {
     const response = await fetch(PUBLISHER_CHECK, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -210,7 +209,7 @@ export const CheckPublisherExists = async (publName) => {
 export const CheckBookstoreExists = async (storeName) => {
   try {
     const response = await fetch(BOOKSTORE_CHECK, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },

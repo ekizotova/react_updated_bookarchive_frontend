@@ -21,10 +21,10 @@ function App() {
           <Route path="/books" element={<BooksList />} />
           <Route path="/bookstores" element={<BookstoresList />} />
           <Route path="/publishers" element={<PublihsersList />} />
-		  <Route path="/books/publishedBy/:idBook" element={<PublishedBy />} />
+		  <Route path="/publishers/publisher_info/:publisherId" element={<PublishedBy />} />
 		  <Route path="/books/inStock/:idBook" element={<ListInStock />} />
 		  <Route path="/books/search" element={<Search />} />
-		  <Route path="/authors/writtenBooks/:idAuthor" element={<WrittenBooks />} />
+		  <Route path="/books/author/:idAuthor" element={<WrittenBooks />} />
         </Routes>
       </div>
     </Router>

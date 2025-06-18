@@ -31,9 +31,7 @@ function Search() {
 			setPublisherExists(publisherExists);
 			setBookstoreExists(bookstoreExists);
 	  
-			if (!publisherExists || !bookstoreExists) {
-				return;
-			}
+			
 			fetchBooks();
 		};
 		

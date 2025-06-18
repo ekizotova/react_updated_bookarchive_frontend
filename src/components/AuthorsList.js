@@ -8,7 +8,7 @@ function AuthorsList() {
 	const [newAuthor, setNewAuthor] = useState({
 		name: '',
 		surname: '',
-		nationality: '',
+		countryOrigin: '',
 		age: '',
   });
   const [error, setError] = useState('');
@@ -29,7 +29,7 @@ function AuthorsList() {
 	const handleAddAuthor = async () => {
     try {
 		
-      if (!newAuthor.name || !newAuthor.surname || !newAuthor.nationality || !newAuthor.age) {
+      if (!newAuthor.name || !newAuthor.surname || !newAuthor.countryOrigin || !newAuthor.age) {
             setError('All fields must be filled');
             return;
         }
@@ -49,7 +49,7 @@ function AuthorsList() {
       setNewAuthor({
         name: '',
         surname: '',
-        nationality: '',
+        countryOrigin: '',
         age: '',
       });
     } catch (error) {
@@ -82,15 +82,15 @@ function AuthorsList() {
                     </thead>
                     <tbody>
                         {authors.map(author => (
-                            <tr key={author.idAuthor}>{/* No whitespace before or after this line */}
-                                <td>{author.idAuthor}</td>
+                            <tr key={author.id}>{/* No whitespace before or after this line */}
+                                <td>{author.id}</td>
                                 <td>{author.name}</td>
                                 <td>{author.surname}</td>
-                                <td>{author.nationality}</td>
+                                <td>{author.countryOrigin}</td>
                                 <td>{author.age}</td>
 								<td>
                 
-									<Link to={`/authors/writtenBooks/${author.idAuthor}`}>
+									<Link to={`/books/author/${author.id}`}>
 											View
 									</Link>
 								</td>
@@ -111,7 +111,7 @@ function AuthorsList() {
 						</label>
 						<label>
 							Country Origin:
-							<input type="text" name="nationality" value={newAuthor.nationality} onChange={handleInputChange} />
+							<input type="text" name="countryOrigin" value={newAuthor.countryOrigin} onChange={handleInputChange} />
 						</label>
 						<label>
 							Age:

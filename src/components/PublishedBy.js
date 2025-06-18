@@ -3,45 +3,33 @@ import { useParams } from 'react-router-dom';
 import { GetPublishedByForBook } from './Requests';
 
 function PublishedBy() {
-  const [publishedBy, setPublishedBy] = useState([]);
-  const { idBook } = useParams();
+  const { publisherId } = useParams();
+  const [publisher, setPublisher] = useState(null);
 
   useEffect(() => {
-    const fetchPublishedBy = async () => {
+    const fetchPublisher = async () => {
       try {
-        const fetchedPublishedBy = await GetPublishedByForBook(idBook);
-        setPublishedBy(fetchedPublishedBy);
-      } catch (error) {
-        console.error("Error fetching published by:", error);
-      
+        const data = await GetPublishedByForBook(publisherId);
+        setPublisher(data);
+      } catch (err) {
+        console.error("Failed to fetch publisher", err);
       }
     };
 
-    fetchPublishedBy();
-  }, [idBook]);
-  
+    fetchPublisher();
+  }, [publisherId]);
+
+  if (!publisher) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <h1>List of publishers for chosen book</h1>
-				<table>
-                    <thead>
-                        <tr>
-                            <th>name</th>
-							<th>contact</th>
-                            <th>location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {publishedBy.map(publisher => (
-                            <tr key={publisher.idPublisher}>
-								<td> {publisher.publName} </td>
-								<td> {publisher.telNumber} </td>
-                                <td> {publisher.location} </td>
-                                
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+      <h1>Publisher Info</h1>
+      <p><strong>Name:</strong> {publisher.name}</p>
+      <p><strong>Contact:</strong> {publisher.contactNumber}</p>
+      <p><strong>Email:</strong> {publisher.email}</p>
+      <p><strong>Location:</strong> {publisher.location}</p>
     </div>
   );
 }
